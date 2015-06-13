@@ -19,10 +19,12 @@ class Game:
     def scoreSpare(self):
         self.score += 10 + self.throwBalls[self.ball+2]
         self.ball += 2
+        return True
 
     def scoreNormal(self):
         self.score += self.throwBalls[self.ball] + self.throwBalls[self.ball+1]
         self.ball += 2
+        return True
 
     def getScore(self, turnNumber):
         turn = 1 
