@@ -2,34 +2,29 @@ class Game:
     def __init__(self):
         self.throwBalls = []
 
-
     def throwBall(self, number):
         self.throwBalls.append(number)
 
-    def isStrike(self, ball):
-        return self.throwBalls[ball] == 10
+    def isStrike(self):
+        return self.throwBalls[self.ball] == 10
 
-    def isSpare(self, ball):
-        return self.throwBalls[ball] + self.throwBalls[ball+1] == 10
+    def isSpare(self):
+        return self.throwBalls[self.ball] + self.throwBalls[self.ball+1] == 10
 
     def getScore(self, turnNumber):
-        score = 0;
         turn = 1 
-        ball = 0
+        self.score = 0
+        self.ball = 0
         while (turn <= turnNumber):
-            if self.isStrike(ball):
-                turnScore = self.throwBalls[ball] + self.throwBalls[ball+1] +self.throwBalls[ball+2]
-                ball += 1
-                score += turnScore;
-            elif self.isSpare(ball):
-                turnScore = self.throwBalls[ball] + self.throwBalls[ball+1]
-                ball += 2
-                score += turnScore;
-                score += self.throwBalls[ball]
+            if self.isStrike():
+                self.score += 10 + self.throwBalls[self.ball+1] +self.throwBalls[self.ball+2];
+                self.ball += 1                
+            elif self.isSpare():
+                self.score += 10 + self.throwBalls[self.ball+2]
+                self.ball += 2
             else:
-                turnScore = self.throwBalls[ball] + self.throwBalls[ball+1]
-                ball += 2
-                score += turnScore;
+                self.score += self.throwBalls[self.ball] + self.throwBalls[self.ball+1]
+                self.ball += 2
             
             turn += 1
-        return score
+        return self.score
