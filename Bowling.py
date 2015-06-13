@@ -30,9 +30,9 @@ class Game:
         self.ball = 0
         while (turn <= turnNumber):
             if self.isStrike():
-                self.scoreStrike(); 
+                self.isStrike() and self.scoreStrike(); 
             elif self.isSpare():
-                self.scoreSpare()        
+                self.isSpare() and self.scoreSpare()        
             else:
                 self.scoreNormal()       
             
