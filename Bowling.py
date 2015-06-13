@@ -31,12 +31,10 @@ class Game:
         self.score = 0
         self.ball = 0
         while (turn <= turnNumber):
-            if self.isStrike():
-                self.isStrike() and self.scoreStrike(); 
-            elif self.isSpare():
-                self.isSpare() and self.scoreSpare()        
-            else:
-                self.scoreNormal()       
+            
+            (self.isStrike() and self.scoreStrike())  \
+            or (self.isSpare() and self.scoreSpare()) \
+            or (self.scoreNormal())
             
             turn += 1
         return self.score
